@@ -1,0 +1,32 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+
+rem ---------------------------------------------------------------
+rem  Verilog Practice Lab - launcher
+rem  NOTE: this file is intentionally pure ASCII.
+rem        Chinese text is printed by Node.js, not by cmd,
+rem        because cmd confuses the console code page.
+rem ---------------------------------------------------------------
+
+set "NODE_EXE=node"
+if exist "D:\node.js\node.exe" set "NODE_EXE=D:\node.js\node.exe"
+
+"%NODE_EXE%" --version >nul 2>nul
+if errorlevel 1 goto nonode
+
+"%NODE_EXE%" "%~dp0server\launch.js"
+if errorlevel 1 (
+  echo.
+  echo   Startup failed. Press any key to close this window.
+  pause >nul
+)
+exit /b 0
+
+:nonode
+echo.
+echo   Node.js was not found.
+echo   Please install Node.js, or put node.exe at D:\node.js\
+echo.
+pause >nul
+exit /b 1

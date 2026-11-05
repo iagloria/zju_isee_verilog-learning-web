@@ -1,0 +1,34 @@
+# ===== 第三方工具（不入库，用 .vlab\tools\fetch-tools.bat 下载）=====
+.vlab/tools/*.dll
+.vlab/tools/icarus/
+.vlab/tools/bin/
+.vlab/tools/lib/
+.vlab/tools/include/
+.vlab/tools/_proxy/
+.vlab/tools/*.vpi
+
+# ===== 运行时产物 =====
+.vlab/data/runs/
+.vlab/data/cache/
+.vlab/data/tmp/
+.vlab/data/logs/
+.vlab/data/download/
+.vlab/data/last_port.txt
+.vlab/data/server.pid
+
+# ===== 个人数据 =====
+.vlab/data/progress/
+.vlab/data/answers/
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ===== Node =====
+node_modules/
+npm-debug.log*

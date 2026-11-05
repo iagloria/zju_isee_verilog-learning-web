@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verilog 闯关训练</title>
+<link rel="stylesheet" href="/vendor/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- 左侧：题目列表 -->
+  <aside id="sidebar">
+    <div class="brand">
+      <div class="brand-title">Verilog 闯关</div>
+      <div class="brand-sub">硬件描述语言 · 期末冲刺</div>
+    </div>
+    <div class="search">
+      <input id="search" type="search" placeholder="搜索题号 / 关键字…" autocomplete="off">
+    </div>
+    <div class="progress-mini" id="progressMini"></div>
+    <div id="problemList"></div>
+    <div class="sidebar-foot">
+      <button class="ghost" id="btnRandom">🎲 随机来一题</button>
+      <button class="ghost" id="btnExam">📝 生成手写模拟卷</button>
+      <button class="ghost" id="btnExamDocx">📄 导出 Word 模拟卷</button>
+      <button class="ghost" id="btnOpenAnswers">📂 打开答案存档</button>
+    </div>
+  </aside>
+
+  <!-- 中间：题目描述 -->
+  <section id="descPane">
+    <div id="descHeader"></div>
+    <div id="descScroll">
+      <div id="descBody" class="md"></div>
+      <div id="descExtra"></div>
+    </div>
+  </section>
+
+  <!-- 右侧：编辑器 + 结果 -->
+  <section id="workPane">
+    <div class="toolbar">
+      <div class="file-tabs" id="fileTabs"></div>
+      <div class="tools">
+        <button class="btn secondary" id="btnExplain" title="不仿真，只做语法/规范检查（Ctrl+E）">解释一下</button>
+        <button class="btn secondary" id="btnReset" title="恢复初始代码">重置</button>
+        <button class="btn secondary" id="btnSave" title="把当前代码存到 data/answers（Ctrl+S）">保存</button>
+        <button class="btn primary" id="btnRun" title="编译并运行测试（Ctrl+Enter）">▶ 运行</button>
+      </div>
+    </div>
+    <div class="editor-wrap">
+      <div id="editor"></div>
+    </div>
+    <div class="splitter" id="splitter"></div>
+    <div class="result-pane" id="resultPane">
+      <div class="result-tabs">
+        <button class="rtab active" data-tab="result">运行结果</button>
+        <button class="rtab" data-tab="log">运行日志</button>
+        <button class="rtab" data-tab="wave">波形</button>
+        <button class="rtab" data-tab="solution">参考答案</button>
+        <span class="rtab-spacer"></span>
+        <span class="stage-badge" id="stageBadge"></span>
+      </div>
+      <div class="result-body" id="resultBody">
+        <div class="empty-hint">写好代码后点「▶ 运行」（Ctrl+Enter）。<br>会真的调用 Icarus Verilog 编译 + 仿真，逐条告诉你哪组测试没通过。</div>
+      </div>
+      <div class="result-body hidden" id="logBody"><pre class="log"></pre></div>
+      <div class="result-body hidden" id="waveBody"></div>
+      <div class="result-body hidden" id="solutionBody"></div>
+    </div>
+  </section>
+</div>
+
+<script src="/vendor/codemirror/lib/codemirror.js"></script>
+<script src="/vendor/codemirror/mode/verilog/verilog.js"></script>
+<script src="/vendor/codemirror/addon/edit/closebrackets.js"></script>
+<script src="/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="/vendor/codemirror/addon/selection/active-line.js"></script>
+<script src="/render.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
